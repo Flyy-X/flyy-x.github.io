@@ -2,7 +2,7 @@ site:
   name: Flyy
   site: 'https://flyy-x.github.io'
   base: '/'
-  trailingSlash: false
+  trailingSlash: true
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
 
@@ -27,9 +27,9 @@ metadata:
 #    site: '@onwidget'
 #    cardType: summary_large_image
 
-i18n:
-  language: en
-  textDirection: ltr
+#i18n:
+#  language: en
+#  textDirection: ltr
 
 apps:
   blog:
