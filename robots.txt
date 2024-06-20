@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://demo.caij.xyz/sitemap-index.xml
