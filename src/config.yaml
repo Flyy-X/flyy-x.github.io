@@ -1,6 +1,6 @@
 site:
   name: Flyy
-  site: 'https://demo.caij.xyz'
+  site: 'https://flyy-x.github.io'
   base: '/'
   trailingSlash: false
 
