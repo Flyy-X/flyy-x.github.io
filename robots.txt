@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://flyy-x.github.io/sitemap-index.xml
