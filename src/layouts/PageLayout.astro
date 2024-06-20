@@ -20,6 +20,7 @@ const headerData = {
     { text: t("main.header.features"), href: `${getHomePermalink()}#features` },
     { text: t("main.header.pricing"), href: `${getHomePermalink()}#pricing` },
     { text: t("main.header.apps"), href: `${getHomePermalink()}#apps` },
+    { text: t("main.support"), href: `${getHomePermalink()}#footer` },
   ],
   actions: [{
     variant: 'primary',
@@ -33,7 +34,7 @@ const headerData = {
 const footerData =  {
   links: [
     {
-      title: 'Support',
+      title: t("main.support"),
       links: [
         { text: 'flyy.service.pub@gmail.com', href: 'mailto:flyy.service.pub@gmail.com' },
         { text: 'Twitter&X', href: 'mailto:flyy.service.pub@gmail.com' },
@@ -42,7 +43,7 @@ const footerData =  {
     },
   ],
   secondaryLinks: [
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: t("main.privacy"), href: getPermalink('/privacy') },
   ]}
 ---
 

@@ -91,6 +91,8 @@
         "title": "See",
         "description": "A clean app for Weibo"
       }
-    }
+    },
+    "privacy": "Privacy Policy",
+    "support": "Support"
   }
 }

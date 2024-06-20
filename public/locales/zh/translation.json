@@ -92,6 +92,8 @@
         "title": "See",
         "description": "一个感觉无广告的微博App"
       }
-    }
+    },
+    "privacy": "隐私协议",
+    "support": "支持"
   }
 }
