@@ -1,8 +1,6 @@
 ---
 import '~/assets/styles/tailwind.css';
 
-import { I18N } from 'astrowind:config';
-
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
 import CustomStyles from '~/components/CustomStyles.astro';
@@ -25,12 +23,12 @@ export interface Props {
 }
 
 const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N;
+
 
 ---
 
 <!doctype html>
-<html lang={i18next.language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={i18next.language} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />
@@ -43,31 +41,44 @@ const { language, textDirection } = I18N;
 
     <!-- Comment the line below to disable View Transitions -->
     <ViewTransitions fallback="swap" />
-    <!--<script>-->
-    <!--  // 语言跳转逻辑-->
-    <!--  (function() {-->
-    <!--    let userLang = navigator.language || navigator.userLanguage;-->
-    <!--    // 定义支持的语言和对应的路径-->
-    <!--    let langPaths = {-->
-    <!--      "zh-CN": "zh",-->
-    <!--      // "zh-TW": "/zh-tw/",-->
-    <!--      // "fr": "/fr/"-->
-    <!--    };-->
-    <!--    -->
-    <!--    // 获取完整的路径-->
-    <!--    const fullPath = window.location.pathname;-->
-    <!--    const pathSegments = fullPath.split('/');-->
-    <!--    const firstPathSegment = pathSegments[1];-->
-    <!--    if (langPaths[userLang]) {-->
-    <!--      if (firstPathSegment !== langPaths[userLang]) {-->
-    <!--        window.location.href = langPaths[userLang];-->
-    <!--      }-->
-    <!--    }-->
-    <!--  })();-->
-    <!--</script>-->
-  </head>
+    
+    <script>
+      const supportedLanguages = ['zh'];
 
+      function getLocalizedPath(pathname) {
+        if (supportedLanguages.some((lang) => pathname.startsWith(`/${lang}`))) {
+          return pathname;
+        }
+        // 获取浏览器语言偏好
+        const browserLanguage = navigator.language || navigator.userLanguage;
+        const preferredLanguage = supportedLanguages.find((lang) => browserLanguage.startsWith(lang));
+        
+        if (preferredLanguage) {
+          // 插入语言标识符 
+          return `/${preferredLanguage}${pathname}`;
+        } else {
+          return pathname
+        }
+      }
+      
+      // 定义一个键来标识会话期间是否首次访问
+      const sessionFirstVisitKey = 'isSessionFirstVisit';
+      document.addEventListener('DOMContentLoaded',  () => {
+          const isSessionFirstVisit = sessionStorage.getItem(sessionFirstVisitKey) === null;
+          if (isSessionFirstVisit) {
+            sessionStorage.setItem(sessionFirstVisitKey, 'false');
+            const currentPath = window.location.pathname;
+            const localizedPath = getLocalizedPath(currentPath);
+
+            if (currentPath !== localizedPath) {
+              window.location.replace(localizedPath);
+            }
+          }
+      });
+    </script>
+  </head>
   <body class="antialiased text-default bg-page tracking-tight">
+    <p>{Astro.currentLocale}</p>
     <slot />
 
     <BasicScripts />
