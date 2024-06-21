@@ -33,7 +33,7 @@ const {
         containerClass
       )}
     >
-      {items.map(({ title, description, icon, href, callToAction, classes: itemClasses = {} }) => (
+      {items.map(({ title, description, icon, alt,href, callToAction, classes: itemClasses = {} }) => (
         <div class={twMerge('relative flex flex-col', panelClass, itemClasses?.panel)}>
           {(icon || defaultIcon) && (
             <!--<Image src="" class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />-->
@@ -42,7 +42,7 @@ const {
               width={50}
               height={50}
               layout="fixed"
-              alt=""
+              alt={alt}
               src={icon}/>
           )}
           <div class={twMerge('text-ms font-semibold', titleClass, itemClasses?.title)}><a href={href}>{title}</a></div>

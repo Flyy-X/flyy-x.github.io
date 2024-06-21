@@ -17,6 +17,7 @@ import type { MetaData as MetaDataType } from '~/types';
 
 import i18next from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
+import HeadHrefLangsWithDefault from "./HeadHrefLangsWithDefault.astro";
 
 export interface Props {
   metadata?: MetaDataType;
@@ -35,7 +36,7 @@ const { metadata = {} } = Astro.props;
     <CustomStyles />
     <ApplyColorMode />
     <Metadata {...metadata} />
-    <HeadHrefLangs />
+    <HeadHrefLangsWithDefault />
     <!--<SiteVerification />-->
     <!--<Analytics />-->
 
