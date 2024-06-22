@@ -8,6 +8,7 @@ import Button from "../components/ui/Button.astro";
 import Image from "../components/common/Image.astro";
 import Features2 from "../components/widgets/Features2.astro";
 import { t, changeLanguage } from "i18next";
+import IconTextButton from "../components/ui/IconTextButton.astro";
 
 changeLanguage("en");
 
@@ -21,6 +22,9 @@ const metadata = {
     description: t("site.description"),
     ignoreTitleTemplate: true,
 };
+
+const params = Astro.url.searchParams;
+const channel = params.get('channel');
 ---
 
 <Layout metadata={metadata}>
@@ -29,7 +33,7 @@ const metadata = {
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
       <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
         <div class="py-12 md:py-20 lg:py-0 lg:flex lg:gap-8">
-          <div class="text-center lg:text-left pb-10 md:pb-16 mx-auto">
+          <div class="text-center md:ml-3 lg:text-left pb-10 md:pb-16 mx-auto">
             <h1
               class="text-5xl md:text-6xl font-bold leading-tighter mb-4 font-heading dark:text-gray-200 text-start">
               <span class="text-xl">{t("main.home.title")}</span>
@@ -48,6 +52,12 @@ const metadata = {
               <Button variant="link" href={googlePlayDownloadLink}>
                 <Image src={googlePlayImg} alt="Google Play Image" width={150} height={44.5}/>
               </Button>
+
+              <IconTextButton id="apk_down" icon="tabler:brand-android" text="APK Download"
+                       class="ml-2 py-1.5 px-3 md:px-3 font-semibold shadow-none text-xs w-auto"
+                      href="https://github.com/funcenter/flyy/releases">
+                
+              </IconTextButton>
             </div>
           </div>
 
@@ -244,20 +254,5 @@ const metadata = {
       
     ]}
   />
-  
-  <!-- Steps Widget ****************** -->
-
-
-  <!-- Features3 Widget ************** -->
-
-
-  <!-- Content Widget **************** -->
-
-
-  <!-- Content Widget **************** -->
-
-  <!-- Content Widget **************** -->
-
-  <!-- Testimonials Widget *********** -->
 
 </Layout>

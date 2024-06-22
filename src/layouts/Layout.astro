@@ -25,7 +25,6 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 
-
 ---
 
 <!doctype html>
@@ -64,9 +63,13 @@ const { metadata = {} } = Astro.props;
       
       // 定义一个键来标识会话期间是否首次访问
       const sessionFirstVisitKey = 'isSessionFirstVisit';
+      const fromKey = "from"
       document.addEventListener('DOMContentLoaded',  () => {
           const isSessionFirstVisit = sessionStorage.getItem(sessionFirstVisitKey) === null;
           if (isSessionFirstVisit) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const from = urlParams.get(fromKey);
+            sessionStorage.setItem(fromKey, from);
             sessionStorage.setItem(sessionFirstVisitKey, 'false');
             const currentPath = window.location.pathname;
             const localizedPath = getLocalizedPath(currentPath);
@@ -75,11 +78,17 @@ const { metadata = {} } = Astro.props;
               window.location.replace(localizedPath);
             }
           }
+          const from = sessionStorage.getItem(fromKey);
+          if (from === "google") {
+              const element = document.getElementById('apk_down');
+              if (element) {
+                element.style.display = 'none';
+              }
+          }
       });
     </script>
   </head>
   <body class="antialiased text-default bg-page tracking-tight">
-    <p>{Astro.currentLocale}</p>
     <slot />
 
     <BasicScripts />
