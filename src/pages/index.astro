@@ -22,9 +22,6 @@ const metadata = {
     description: t("site.description"),
     ignoreTitleTemplate: true,
 };
-
-const params = Astro.url.searchParams;
-const channel = params.get('channel');
 ---
 
 <Layout metadata={metadata}>
@@ -32,15 +29,15 @@ const channel = params.get('channel');
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
       <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-        <div class="py-12 md:py-20 lg:py-0 lg:flex lg:gap-8">
-          <div class="text-center md:ml-3 lg:text-left pb-10 md:pb-16 mx-auto">
+        <div class="py-12 md:py-20 lg:py-0 lg:flex lg:gap-8 md:mt-20">
+          <div class="text-center md:ml-3 lg:text-left pb-10 md:pb-16 mx-auto md:mt-5">
             <h1
               class="text-5xl md:text-6xl font-bold leading-tighter mb-4 font-heading dark:text-gray-200 text-start">
               <span class="text-2xl">{t("main.home.title")}</span>
             </h1>
 
             <div class="max-w-3xl mx-auto lg:max-w-none">
-              <p class="text-lg text-muted mb-6 dark:text-slate-300 text-start">{t("main.home.description")}</p>
+              <p class="text-xl text-muted mb-6 dark:text-slate-300 text-start">{t("main.home.description")}</p>
             </div>
 
 
@@ -222,8 +219,6 @@ const channel = params.get('channel');
       },
     ]}
   />
-
-  <!-- Steps Widget ****************** -->
 
   <Features2
     id="apps"
