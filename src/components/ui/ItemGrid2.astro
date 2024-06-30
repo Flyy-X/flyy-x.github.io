@@ -37,13 +37,15 @@ const {
         <div class={twMerge('relative flex flex-col', panelClass, itemClasses?.panel)}>
           {(icon || defaultIcon) && (
             <!--<Image src="" class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />-->
-            <Image
-              class={twMerge('mb-2 w-10 h-10 shadow rounded-md', defaultIconClass, itemClasses?.icon)}
-              width={50}
-              height={50}
-              layout="fixed"
-              alt={alt}
-              src={icon}/>
+            <a href={href} target="_blank">
+              <Image
+                class={twMerge('mb-2 w-10 h-10 shadow rounded-md', defaultIconClass, itemClasses?.icon)}
+                width={50}
+                height={50}
+                layout="fixed"
+                alt={alt}
+                src={icon}/>
+            </a>
           )}
           <div class={twMerge('text-ms font-semibold', titleClass, itemClasses?.title)}><a href={href}>{title}</a></div>
           {description && (
