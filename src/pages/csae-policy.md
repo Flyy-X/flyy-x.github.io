@@ -1,8 +1,7 @@
 ---
-title: 'Privacy Policy'
+title: 'CSAE Policy'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
-CSAE Policy
 
 Our Commitment to Child Safety
 
